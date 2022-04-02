@@ -1,0 +1,4 @@
+user platinum;1
+user gold;4
+user silver;2
+user bronze;3
