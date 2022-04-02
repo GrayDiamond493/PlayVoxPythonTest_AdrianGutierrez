@@ -22,8 +22,6 @@ cnx = mysql.connector.connect(user=user, password=password,
                               database='users')
 
 # Publish Message to AWS SNS
-
-
 def send_message(message, number):
     client.publish(
         phone_number=number,
@@ -31,8 +29,6 @@ def send_message(message, number):
     )
 
 # Assemble Message from database user information
-
-
 def build_message(user_subscription, user_profile):
     query = "select * from users where profile ="+user_profile
     cursor = cnx.cursor()
@@ -45,16 +41,12 @@ def build_message(user_subscription, user_profile):
                          + " to get more details", number)
 
 # Check membership class and build message accordingly
-
-
 def check_subscription(user_info):
     user_subscription = user_info[0].split(' ')[1]
     user_profile = user_info[1]
     build_message(user_subscription, user_profile)
 
 # Read text file with profile info
-
-
 def read_file():
     file = open("src/profileDB_id.txt", "r")
     lines = file.readlines()
